@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*sudo selector*/
+:root {
+  /*Variavel no CSS, a variavel é criada com o " -- " + o nome da variavel e é chamada com a função " var() " */
+  --text-color: white;
+  --bg-url: url(./src/bg-mobile.jpg);
+  --strok-color: rgba(255, 255, 255, 0.5);
+  --bg-buttons: rgba(255, 255, 255, 0.05);
+  --bg-buttons-hover: rgba(0, 0, 0, 0.02);
+  --icons-social-color: rgba(255, 255, 255, 0.2);
+  --bg-button-switch: url(./src/sun.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./src/bg-mobile-light.jpg);
+  --strok-color: rgba(0, 0, 0, 0.5);
+  --bg-buttons: rgba(0, 0, 0, 0.05);
+  --bg-buttons-hover: rgba(0, 0, 0, 0.02);
+  --icons-social-color: rgba(0, 0, 0, 0.1);
+  --bg-button-switch: url(./src/moon-stars.svg);
+}
+
+body {
+  background-image: var(--bg-url);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+
+  /*Chamado a variavel atravez do " var() " */
+  color: var(--text-color);
+}
+
+#container {
+  width: 368px;
+  height: 712px;
+  margin: auto;
+  margin-top: 56px;
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+/* PERFIL */
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* BOTÂO */
+#switch {
+  margin: 4px auto;
+
+  /*colocar uma area para movimentação das camadas dos filhos*/
+  position: relative;
+  width: 64px;
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  /**/
+  background: white var(--bg-button-switch) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  /*POSISIONAMENTO DE CAMADAS*/
+  position: absolute;
+  /*com o alinhamento "top" ou "botton" o elemento segue para cima e para baixo do eixo X colocando "top: 50%" a ponta de cima do elemento(top) ficará alinhado ao meio (50%) da caixa  */
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  /*com a propriedade "translateY" o elemento vai alinhar para cima e para baixo da caixa, usando o "tranform: translateY(-50%)" o elemento fica com metade(50%) para fora da caixa e por ser um numero negativo ele sai para cima*/
+  transform: translateY(-50%);
+}
+.light #switch button {
+  left: initial;
+  right: 0;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--bg-buttons-hover);
+  border: 1px solid var(--strok-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* Links */
+ul {
+  /* Remover os estilos da lista(Tira os pontos de ordem da lista)*/
+  list-style: none;
+
+  /*colocar o sentido de alinhamento do conteudo da tela no modo FLEX*/
+  display: flex;
+
+  /*O modo FLEX vem por padrão o alinhamento no modo ROW(linha) que faz com que os conteudos se alinhem um ao lado do outro, aqui mudamos para COLUMn(coluna) para alinhar um abaixo do outro*/
+  flex-direction: column;
+
+  /* o GAP dar espaço entre os elementos*/
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+
+  /*Alinha o conteudo ao meio no eixo X(horizontal)*/
+  align-items: center;
+
+  /*alinha o conteudo ao meio no eixo Y(vestical)*/
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  background: var(--bg-buttons);
+  border: 1px solid var(--strok-color);
+  /*colcar aredondamento nas bordas da caixa*/
+  border-radius: 8px;
+  /*coloca um filtro de BLUR(emassado) no fundo*/
+  backdrop-filter: blur(4px);
+
+  /*colocando uma vendorPrefix(um prefixo para liberar no navegador)*/
+  /*para saber se pode usar ou não pesquisa no CANIUSE.COM*/
+  -webkit-backdrop-filter: blur(4px);
+
+  /*Coloca uma linha no texto (em cima, em baixo, no meio ou nenhuma) - (remove o estilo de links do texto)*/
+  text-decoration: none;
+
+  /*colocando a força da fonte*/
+  font-weight: 500;
+
+  /*quando muda algo na pagina ele da um tempo*/
+  transition: background 0, 5;
+}
+
+/* pseudo-selector*/
+/*com a propriedade " :hover " as coisas aplicadas aqui só serão vistas quando passar o mouse em cima*/
+ul li a:hover {
+  background: var(--bg-buttons-hover);
+  border: 1px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--icons-social-color);
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}

@@ -31,6 +31,7 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 body * {
@@ -188,4 +189,14 @@ footer {
   padding: 24px;
   text-align: center;
   font-size: 14px;
+}
+
+/*Colocando uma ADD RULE para adicionar uma "add rule" voce começa com o " @ " */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./src/bg-desktop.jpg);
+  }
+  .light {
+    --bg-url: url(./src/bg-desktop-light.jpg);
+  }
 }

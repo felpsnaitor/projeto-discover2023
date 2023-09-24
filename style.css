@@ -89,10 +89,13 @@ body * {
   z-index: 1;
   /*com a propriedade "translateY" o elemento vai alinhar para cima e para baixo da caixa, usando o "tranform: translateY(-50%)" o elemento fica com metade(50%) para fora da caixa e por ser um numero negativo ele sai para cima*/
   transform: translateY(-50%);
+
+  /*Colocando uma animação com a ADDRULE*/
+  animation: slide-back 0.2s;
 }
 .light #switch button {
-  left: initial;
-  right: 0;
+  /*FORWARD faz com o que o elemento permaneça na ultima posição*/
+  animation: slide-in 0.2s forwards;
 }
 
 #switch span {
@@ -198,5 +201,24 @@ footer {
   }
   .light {
     --bg-url: url(./src/bg-desktop-light.jpg);
+  }
+}
+
+/*criar uma addrule para animação*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
